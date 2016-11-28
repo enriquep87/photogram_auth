@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
   post "/create_comment", :controller => "comments", :action => "create"
+  post "/quick_comment", :controller => "comments", :action => "quick"
 
   # READ
   get "/comments", :controller => "comments", :action => "index"

@@ -23,10 +23,54 @@
             <%= photo.caption %>
             </p>
 
-            <p>
-            <%= photo.comments %>
-            </p>
 
+
+              <i class="fa fa-heart" aria-hidden="true"></i>
+
+            <% @likes.where(:photo_id => photo.id).each do |like| %>
+
+                <%= like.user.username %>
+
+              <% end %>
+
+
+            <% @comments.where(:photo_id => photo.id).each do |comment| %>
+            <ul>
+              <dd><%= comment.user.username %>
+              </dd>
+            <%= comment.body %>
+            </ul>
+            <% end %>
+
+
+
+            <div class="row">
+                <form action="/quick_comment" method="post">
+                  <!-- Hidden input for authenticity token to protect from forgery -->
+                  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                  <!-- Label and input for photo_id -->
+
+                    <input type="hidden" id="photo_id" name="photo_id"  class="form-control" value="<%= photo.id %>">
+
+                    <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+                  <!-- Label and input for body -->
+                  <div class="form-group">
+
+                    <input type="text" id= "body" name="body" placeholder="Add a comment..." class="form-control" required>
+
+                  </div>
+
+                  <button class="btn btn-success">
+                    Create Comment
+                  </button>
+
+                </form>
+              </div>
+
+
+            <dd>
             <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
 
             <%if photo.user.username == current_user.username %>
@@ -35,7 +79,8 @@
             <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
 
             <%end%>
-          </td>
+            </dd>
+
 
         </div>
       </div>
