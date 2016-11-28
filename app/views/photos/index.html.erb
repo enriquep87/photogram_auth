@@ -1,0 +1,49 @@
+<div class="page-header">
+
+    Photos
+    <a href="/photos/new" class="btn btn-lg btn-success"><i class="fa fa-plus fa-4x" aria-hidden="true"></i></a>
+
+</div>
+
+
+
+      <% @photos.each do |photo| %>
+      <tr>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= photo.user.username %>
+
+
+          </h3>
+        </div>
+        <div class="panel-body">
+            <img src="<%= photo.image %>" width="300"/>
+            <p>
+            <%= photo.caption %>
+            </p>
+
+            <p>
+            <%= photo.comments %>
+            </p>
+
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+
+            <%if photo.user.username == current_user.username %>
+
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+            <%end%>
+          </td>
+
+        </div>
+      </div>
+
+
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
