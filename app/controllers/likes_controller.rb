@@ -43,9 +43,22 @@ class LikesController < ApplicationController
     if save_status == true
       redirect_to("/photos", :notice => "Like created successfully.")
     else
-        
+
       redirect_to("/photos", :notice => "Like deleted successfully")
     end
+  end
+
+  def delete
+    @like = Like.find(params[:id])
+
+    @like.destroy
+
+    if URI(request.referer).path == "/likes/#{@like.id}"
+      redirect_to("/photos", :notice => "Like deleted.")
+    else
+      redirect_to("/photos", :notice => "Like deleted.")
+    end
+
   end
 
   def edit

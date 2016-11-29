@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   get "/likes/new", :controller => "likes", :action => "new"
   post "/create_like", :controller => "likes", :action => "create"
   post "/quick_like", :controller => "likes", :action => "quick"
-
+  post "/delete_like/:id", :controller => "likes", :action => "delete"
 
   # READ
   get "/likes", :controller => "likes", :action => "index"
