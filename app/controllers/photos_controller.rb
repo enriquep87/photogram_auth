@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
     @comments = Comment.all
     @likes = Like.all
 
+
     render("photos/index.html.erb")
   end
 
