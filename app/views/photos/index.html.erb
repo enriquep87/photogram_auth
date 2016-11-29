@@ -13,6 +13,8 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             <%= photo.user.username %>
+            <h6><%=time_ago_in_words(Time.now)%> ago</h6>
+
 
 
           </h3>
@@ -70,10 +72,6 @@
 
 
                   </form>
-
-
-
-
 
 
 
