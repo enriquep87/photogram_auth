@@ -12,7 +12,13 @@
         </h3>
       </div>
 
-      <dt>Images</dt>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Images</th>
+              <th>Caption</th>
+            </tr>
 
       <%@photo.each do |photo|%>
       <tr>
@@ -20,6 +26,9 @@
           <div class="panel-body">
             <img src="<%=photo.image%>" width="300" />
           </div>
+        </td>
+        <td>
+          <%=photo.caption%>
         </td>
       <%end%>
       </tr>

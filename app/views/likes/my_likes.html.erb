@@ -14,6 +14,7 @@
           <table class="table table-striped table-hover">
             <tr>
               <th>Photo</th>
+              <th>Name</th>
               <th>User</th>
               <th>Actions</th>
             </tr>
@@ -25,6 +26,7 @@
         <td>
         <img src="<%=like.photo.image%>" width="200" /></td>
 
+        <td><%= like.photo.caption %></td>
         <td><%= like.photo.user.username %></td>
         <% end %>
 
